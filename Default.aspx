@@ -3,7 +3,7 @@
 <script runat="server">
     void Page_Load(object sender, EventArgs e)
     {
-        string testItem = Request["test"];
+        string testItem = Request["test"]; // GET POST 都吃
         if (!string.IsNullOrEmpty(testItem))
         {
             // 測試1, 顯示 HTTP Method
@@ -43,8 +43,9 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <h4>
         測試項目: 
+    </h4>
     <select id="selTestItem">
         <option value="method">DELETE Method</option>
         <option value="404">傳回404</option>
@@ -52,12 +53,12 @@
         <option value="error">發生錯誤</option>
         <option value="errorInfo">解析錯誤</option>
     </select>
-        <input type="button" id="btnGet" value="直接瀏覽" />
-        <input type="button" id="btnAjax" value="AJAX存取" />
-        <hr />
-        <div id="dvStatus"></div>
-        <iframe id="frmShow" style="width: 800px; height: 600px"></iframe>
-    </form>
+    <button id="btnGet">直接瀏覽</button>
+    <button id="btnAjax">AJAX存取</button>
+    <hr />
+    <div id="dvStatus" style="min-width: 800px; min-height: 600px"></div>
+    <iframe id="frmShow" style="width: 800px; height: 600px"></iframe>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         var selTestItem = document.querySelector('#selTestItem');
